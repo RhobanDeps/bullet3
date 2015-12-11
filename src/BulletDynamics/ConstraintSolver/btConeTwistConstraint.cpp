@@ -553,7 +553,7 @@ void btConeTwistConstraint::calcAngleInfo()
 	btScalar fact;
 
 	// Get Frame into world space
-	if (m_swingSpan1 >= btScalar(CONETWIST_DEF_FIX_THRESHf))
+	if (m_swingSpan1 >= btScalar(CONETWIST_DEF_FIX_THRESH))
 	{
 		b1Axis2 = getRigidBodyA().getCenterOfMassTransform().getBasis() * this->m_rbAFrame.getBasis().getColumn(1);
 		swx = b2Axis1.dot(b1Axis1);
@@ -564,7 +564,7 @@ void btConeTwistConstraint::calcAngleInfo()
 		swing1 *= fact; 
 	}
 
-	if (m_swingSpan2 >= btScalar(CONETWIST_DEF_FIX_THRESHf))
+	if (m_swingSpan2 >= btScalar(CONETWIST_DEF_FIX_THRESH))
 	{
 		b1Axis3 = getRigidBodyA().getCenterOfMassTransform().getBasis() * this->m_rbAFrame.getBasis().getColumn(2);			
 		swx = b2Axis1.dot(b1Axis1);
@@ -599,8 +599,8 @@ void btConeTwistConstraint::calcAngleInfo()
 		btScalar twist = btAtan2Fast( TwistRef.dot(b1Axis3), TwistRef.dot(b1Axis2) );
 		m_twistAngle = twist;
 
-//		btScalar lockedFreeFactor = (m_twistSpan > btScalar(CONETWIST_DEF_FIX_THRESHf)) ? m_limitSoftness : btScalar(0.);
-		btScalar lockedFreeFactor = (m_twistSpan > btScalar(CONETWIST_DEF_FIX_THRESHf)) ? btScalar(1.0f) : btScalar(0.);
+//		btScalar lockedFreeFactor = (m_twistSpan > btScalar(CONETWIST_DEF_FIX_THRESH)) ? m_limitSoftness : btScalar(0.);
+		btScalar lockedFreeFactor = (m_twistSpan > btScalar(CONETWIST_DEF_FIX_THRESH)) ? btScalar(1.0f) : btScalar(0.);
 		if (twist <= -m_twistSpan*lockedFreeFactor)
 		{
 			m_twistCorrection = -(twist + m_twistSpan);
@@ -1011,7 +1011,7 @@ void btConeTwistConstraint::setMotorTargetInConstraintSpace(const btQuaternion &
 		btQuaternion qTargetTwist = qTargetCone.inverse() * m_qTarget; qTargetTwist.normalize();
 
 		// clamp cone
-		if (m_swingSpan1 >= btScalar(CONETWIST_DEF_FIX_THRESHf) && m_swingSpan2 >= btScalar(CONETWIST_DEF_FIX_THRESHf))
+		if (m_swingSpan1 >= btScalar(CONETWIST_DEF_FIX_THRESH) && m_swingSpan2 >= btScalar(CONETWIST_DEF_FIX_THRESH))
 		{
 			btScalar swingAngle, swingLimit; btVector3 swingAxis;
 			computeConeLimitInfo(qTargetCone, swingAngle, swingAxis, swingLimit);
@@ -1027,7 +1027,7 @@ void btConeTwistConstraint::setMotorTargetInConstraintSpace(const btQuaternion &
 		}
 
 		// clamp twist
-		if (m_twistSpan >= btScalar(CONETWIST_DEF_FIX_THRESHf))
+		if (m_twistSpan >= btScalar(CONETWIST_DEF_FIX_THRESH))
 		{
 			btScalar twistAngle; btVector3 twistAxis;
 			computeTwistLimitInfo(qTargetTwist, twistAngle, twistAxis);
