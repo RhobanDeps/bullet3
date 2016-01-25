@@ -944,7 +944,7 @@ void btConeTwistConstraint::computeTwistLimitInfo(const btQuaternion& qTwist,
 	}
 
 	vTwistAxis = btVector3(qMinTwist.x(), qMinTwist.y(), qMinTwist.z());
-	if (twistAngle > SIMD_EPSILON)
+	if (twistAngle > SIMD_EPSILON && !vTwistAxis.fuzzyZero())
 		vTwistAxis.normalize();
 }
 
