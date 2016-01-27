@@ -1,6 +1,12 @@
 {
     "name": "rhobandeps/bullet3",
     "includes": "src",
+    "libraries": [
+        "src/BulletCollision",
+        "src/LinearMath",
+        "src/BulletDynamics",
+        "src/BulletSoftBody"
+    ],
     "build": [
         "mkdir build",
         "cd build",
