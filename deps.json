@@ -12,5 +12,11 @@
         "cd build",
         "cmake -DCMAKE_BUILD_TYPE=Release ..",
         "make"
+    ],
+    "links": [
+        "build/src/BulletDynamics/libBulletDynamics.a",
+        "build/src/BulletCollision/libBulletCollision.a",
+        "build/src/LinearMath/libLinearMath.a",
+        "build/src/BulletSoftBody/libBulletSoftBody.a"
     ]
 }
