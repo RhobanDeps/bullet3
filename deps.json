@@ -14,9 +14,9 @@
         "make"
     ],
     "links": [
-        "build/src/BulletDynamics/libBulletDynamics.a",
-        "build/src/BulletCollision/libBulletCollision.a",
-        "build/src/LinearMath/libLinearMath.a",
-        "build/src/BulletSoftBody/libBulletSoftBody.a"
+        "build/src/BulletDynamics/libBulletDynamics.so",
+        "build/src/BulletCollision/libBulletCollision.so",
+        "build/src/LinearMath/libLinearMath.so",
+        "build/src/BulletSoftBody/libBulletSoftBody.so"
     ]
 }
